@@ -1,0 +1,42 @@
+@model IEnumerable<ReadersBookBank.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Readers Book Bank</h1>
+
+<p>
+    <a asp-action="AddBook" class="btn btn-primary">Add New Book</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Book Name</th>
+            <th>Genre</th>
+            <th>Availability Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.BookName</td>
+                <td>@book.Genre</td>
+                <td>@book.AvailabilityStatus</td>
+                <td>
+                    <a asp-action="RemoveBook"
+                       asp-route-id="@book.Id"
+                       class="btn btn-danger">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
